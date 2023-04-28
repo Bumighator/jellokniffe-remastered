@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600&display=swap');
+
+html, body{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+noscript{
+    background: #191919;
+    height: calc(100% - 0px);
+    width: calc(100% - 0px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+noscript h1{
+    color: #F2EED3;
+    font-family: 'EXO 2', sans-serif;
+    font-weight: 500;
+    font-size: 2vw
+}

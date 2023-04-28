@@ -1,0 +1,75 @@
+.footer
+    width: 100%
+    min-height: 100vh
+    background: $cBGprimary
+    padding-top: 54px
+    padding-bottom: 145px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    &-content
+        &-wrapper
+            &-title
+                h4
+                    margin: 0
+                    padding-bottom: 3em
+                    font-family: $EXO
+                    font-weight: 500
+                    color: $cTEXTprimary
+                    text-align: center
+                    i
+                        text-transform: capitalize
+                        font-style: normal
+                &-links
+                    display: flex
+                    flex-direction: row
+                    flex-wrap: nowrap
+                    justify-content: space-between
+                    max-width: 100%
+                    a
+                        svg
+                            fill: #f2eed380
+                            transition: all .2s cubic-bezier(.31,.05,.07,1)
+                        &:hover
+                            svg
+                                fill: $cTEXTprimary
+            &-about
+                font-family: $EXO
+                font-weight: 400
+                color: $cTEXTprimary
+                p
+                    margin: 0
+            &-copyright
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                border-top: 1px solid $cTEXTprimary
+                padding-top: 5px
+                &-wrapper
+                    display: flex
+                    flex-direction: column
+                    &-inner
+                        font-family: $SEC
+                        font-weight: 400
+                        color: $cTEXTprimary
+                        margin: 0
+                        text-transform: uppercase
+                        line-height: 1em
+                        i
+                            text-transform: capitalize
+                            font-style: normal
+                        a
+                            color: #149eca
+                            svg
+                                padding-left: .2em
+                                height: 1em
+                                width: 1em
+                    &:last-child
+                        .footer-content-wrapper-copyright-wrapper-inner
+                            display: flex
+                            text-align: right
+                            justify-content: right
+            &:first-child
+                display: flex
+                justify-content: space-between
+                padding-bottom: 15em

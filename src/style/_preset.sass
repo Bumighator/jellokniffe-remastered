@@ -1,0 +1,92 @@
+html, body
+    background: $cBGprimary
+    max-width: 100vw
+    width: 100vw
+    margin: 0
+    padding: 0
+    height: calc(100% - 0px)
+
+body, div#root
+    position: relative
+    overflow: hidden
+    height: calc(100% - 0px)
+
+.preloader
+    height: 100vh
+    width: 100vw
+    position: fixed
+    top: 0
+    left: 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background: $cBGprimary
+    z-index: 120
+    opacity: 1
+    transition: opacity 2s cubic-bezier(.31,.05,.07,1)
+    h1
+        color: $cTEXTprimary
+        font-weight: 500
+        font-family: $EXO
+        font-size: 3em
+        text-align: center
+        opacity: 0
+        transition: opacity .2s cubic-bezier(.31,.05,.07,1) 2s
+    &.fetching
+        opacity: 1
+        h1
+            transition: opacity .2s cubic-bezier(.31,.05,.07,1) 2s
+            opacity: 1
+    &.loaded
+        opacity: 0
+    &.hidden
+        display: none
+
+div.App
+    width: calc(100% - 0px)
+    height: 100vh
+    overflow: overlay
+    overflow-y: overlay
+    scrollbar-width: thin
+    scrollbar-color: $cTEXTprimary $cBGNAV
+
+h1, h2
+    font-family: $EXO
+    font-weight: 600
+    margin: 0
+
+h1
+    color: $cTEXTsecondary
+
+h2
+    color: $cTEXTprimary
+    text-align: center
+
+::-webkit-scrollbar 
+    width: 7px
+    height: 7px
+
+::-webkit-scrollbar-track
+    background: transparent
+
+::-webkit-scrollbar-thumb
+    background: $cTEXTprimary
+
+::-webkit-scrollbar-thumb:hover
+    background: #cecab4
+
+.sectionWrapperAdaptive
+    position: relative
+    width: calc(100% - 10rem)
+    height: auto
+    padding: 0 5rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+    &-subWrapper
+        max-width: 1920px
+    .gallery-sectionWrapper
+        min-height: 40vh
+
+img
+    color: $cTEXTprimary

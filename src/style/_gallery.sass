@@ -1,0 +1,530 @@
+@use "sass:math"
+
+.gallery
+    &-sectionWrapper
+        display: flex
+        flex-direction: column
+        &-grid
+            &-noResult
+                color: $cTEXTprimary
+                font-family: $EXO
+                
+            &-masonryGrid
+                &-filtering
+                    display: flex
+                    justify-content: space-between
+                    padding: 30px 0 20px
+                    &-byTag
+                        display: flex
+                        flex-direction: row
+                        align-items: center
+                        &-title
+                            color: $cTEXTprimary
+                            font-family: $EXO
+                            font-weight: 500
+                            text-transform: uppercase
+                            padding-right: 10px
+                        &-wrapper
+                            display: flex
+                            flex-direction: row
+                            position: relative
+                            width: calc(10rem - 12px)
+                            height: calc(1em + 5px)
+                            padding: 5px 6px
+                            background: $cTEXTprimary
+                            p
+                                position: absolute
+                                top: 0
+                                right: 0
+                                bottom: 0
+                                left: 0
+                                margin: 0
+                                margin: auto
+                                width: calc(10rem - 12px)
+                                height: calc(1rem + 5px)
+                                padding: 5px 6px
+                                color: $cTEXTsecondary
+                                font-family: $EXO
+                                font-weight: 500
+                                line-height: 1rem
+                                text-transform: uppercase
+                                display: flex
+                                align-items: center
+                                justify-content: space-between
+                                z-index: 2
+                                &:hover
+                                    cursor: pointer
+                            &-arrow
+                                height: 1em
+                                width: 1em
+                                position: relative
+                                &::after, &::before
+                                    content: ''
+                                    position: absolute
+                                    width: 62%
+                                    height: 2px
+                                    background: $cTEXTsecondary
+                                    top: 0
+                                    bottom: 0
+                                    margin: auto
+                                    transition: .2s ease-in-out
+                                &::before
+                                    left: 0
+                                    transform: rotate(45deg)
+                                &::after
+                                    right: 0
+                                    transform: rotate(-45deg)
+                                &.toggled
+                                    &::after
+                                        -moz-transform: rotate(45deg) scale(-1, 1)
+                                        -webkit-transform: rotate(45deg) scale(-1, 1)
+                                        -o-transform: rotate(45deg) scale(-1, 1)
+                                        -ms-transform: rotate(45deg) scale(-1, 1)
+                                        transform: rotate(45deg) scale(-1, 1)
+                                    &::before
+                                        -moz-transform: rotate(-45deg) scale(-1, 1)
+                                        -webkit-transform: rotate(-45deg) scale(-1, 1)
+                                        -o-transform: rotate(-45deg) scale(-1, 1)
+                                        -ms-transform: rotate(-45deg) scale(-1, 1)
+                                        transform: rotate(-45deg) scale(-1, 1)
+                            form
+                                width: calc(10rem - .6rem)
+                                position: absolute
+                                top: 0
+                                height: 0
+                                padding: 0
+                                left: 0
+                                background: $cTEXTprimary
+                                z-index: 1
+                                padding: .3rem
+                                opacity: 0
+                                transition: .3s cubic-bezier(.31,.05,.07,1)
+                                overflow: hidden
+                                &.toggled
+                                    border-top: 1px solid $cTEXTsecondary
+                                    top: 100%
+                                    height: auto
+                                    padding: .3rem
+                                    opacity: 1
+                                    transition: .3s cubic-bezier(.31,.05,.07,1)
+                                    div
+                                        width: 100%
+                                        display: flex
+                                        flex-direction: row
+                                        justify-content: space-between
+                                button
+                                    margin-top: 1rem
+                                    border: none
+                                    background: #19191900
+                                    font-family: $EXO
+                                    font-size: 1rem
+                                    text-transform: uppercase
+                                    color: $cTEXTsecondary
+                                    transition: all .3s cubic-bezier(.31,.05,.07,1)
+                                    &:hover
+                                        cursor: pointer
+                                    &:hover, &:focus
+                                        background: $cTEXTsecondary
+                                        color: $cTEXTprimary
+                                    &:focus
+                                        box-shadow: 0 0 4px $cBGprimary
+                            &-tag
+                                color: $cTEXTsecondary
+                                font-family: $EXO
+                                font-weight: 300
+                                text-transform: lowercase
+                                position: relative
+                                padding: 5px 1em 5px 3px
+                                width: 8em
+                                display: flex
+                                input
+                                    position: absolute
+                                    top: 0
+                                    bottom: 0
+                                    right: 3px
+                                    z-index: 10
+                                    margin: 0
+                                    margin: auto
+                                    &:hover
+                                        cursor: pointer
+                                &:first-child
+                                    margin-left: 0
+                                i
+                                    font-family: $EXO
+                                    font-weight: 300
+                                    color: transparent
+                                    font-style: normal
+                                .overtext
+                                    position: absolute
+                                    top: 0
+                                    left: 3px
+                                    display: flex
+                                    width: 100%
+                                    height: 100%
+                                    font-family: $EXO
+                                    font-weight: 300
+                                    color: $cTEXTsecondary
+                                    transition: all .2s
+                                    z-index: 0
+                                    align-items: center
+                                    &:hover
+                                        cursor: pointer
+                                &::before
+                                    content: ''
+                                    position: absolute
+                                    width: 100%
+                                    height: 1px
+                                    bottom: 0
+                                    left: 0
+                                    background: #fffbdf
+                                    transition: all .2s ease-in-out
+                                    mix-blend-mode: difference
+                                    z-index: 9
+                                &:hover
+                                    cursor: pointer
+                                    .overtext
+                                        color: $cTEXTprimary
+                                        z-index: 1
+                                    &::before
+                                        height: 100%
+                                        z-index: 0
+                                        mix-blend-mode: difference
+                    &-byYear
+                        display: flex
+                        flex-direction: row
+                        align-items: center
+                        &-title
+                            font-family: $EXO
+                            font-weight: 500
+                            color: $cTEXTprimary
+                            padding-right: 10px
+                            text-transform: uppercase
+                        &-select
+                            position: relative
+                            width: 6em
+                            height: calc(1em + 5px)
+                            background: $cTEXTprimary
+                            padding: 5px 6px
+                            text-transform: uppercase
+                            &-options
+                                position: absolute
+                                top: 0
+                                left: 0
+                                font-family: $EXO
+                                font-weight: 300
+                                color: $cTEXTsecondary
+                                background: $cTEXTprimary
+                                margin: 0
+                                padding: 5px 6px
+                                width: 6em
+                                z-index: 98
+                                list-style-type: none
+                                overflow: hidden
+                                height: 0
+                                transition: .3s ease-in-out
+                                opacity: 0
+                                li
+                                    transition: .1s ease-in-out
+                                    &:hover
+                                        background: $cTEXTsecondary
+                                        color: $cTEXTprimary
+                                &-title
+                                    font-family: $EXO
+                                    font-weight: 500
+                                    color: $cTEXTsecondary
+                                    width: 6em
+                                    margin: 0
+                                    z-index: 99
+                                    position: absolute
+                                    top: 0
+                                    left: 0
+                                    padding: 5px 6px
+                                    height: calc(1em + 5px)
+                                    background: $cTEXTprimary
+                                    line-height: 1em
+                                    display: flex
+                                    flex-direction: row
+                                    align-items: center
+                                    justify-content: space-between
+                                    &-arrow
+                                        height: 1em
+                                        width: 1em
+                                        position: relative
+                                        &::after, &::before
+                                            content: ''
+                                            position: absolute
+                                            width: 62%
+                                            height: 2px
+                                            background: $cTEXTsecondary
+                                            top: 0
+                                            bottom: 0
+                                            margin: auto
+                                            transition: .2s ease-in-out
+                                        &::before
+                                            left: 0
+                                            transform: rotate(45deg)
+                                        &::after
+                                            right: 0
+                                            transform: rotate(-45deg)
+                                        &.toggled
+                                            &::after
+                                                -moz-transform: rotate(45deg) scale(-1, 1)
+                                                -webkit-transform: rotate(45deg) scale(-1, 1)
+                                                -o-transform: rotate(45deg) scale(-1, 1)
+                                                -ms-transform: rotate(45deg) scale(-1, 1)
+                                                transform: rotate(45deg) scale(-1, 1)
+                                            &::before
+                                                -moz-transform: rotate(-45deg) scale(-1, 1)
+                                                -webkit-transform: rotate(-45deg) scale(-1, 1)
+                                                -o-transform: rotate(-45deg) scale(-1, 1)
+                                                -ms-transform: rotate(-45deg) scale(-1, 1)
+                                                transform: rotate(-45deg) scale(-1, 1)
+                                &.toggled
+                                    top: 100%
+                                    height: auto
+                                    opacity: 1
+                                    border-top: 1px solid $cTEXTsecondary
+                            &:hover
+                                cursor: pointer
+                &-wrapper
+                    display: flex
+                    justify-content: center
+                    width: 100%
+                    position: relative
+                    font-size: 19px
+                    &-column
+                        position: inherit
+                        display: flex
+                        flex-direction: column
+                        width: calc(100% / 3 + 1.013rem)
+                        &:first-child
+                            width: calc(100% / 3)
+                            .gallery-sectionWrapper-grid-masonryGrid-wrapper-column-item-wrapper
+                                padding-left: 0 !important
+                        &:last-child
+                            width: calc(100% / 3)
+                            .gallery-sectionWrapper-grid-masonryGrid-wrapper-column-item-wrapper
+                                padding-right: 0 !important
+                        &-item
+                            display: flex
+                            img
+                                max-width: 100%
+                                width: 100%
+                                height: auto
+                                &:hover
+                                    cursor: pointer
+                            &-wrapper
+                                padding-top: 1rem
+                                padding-left: 1rem
+                                padding-bottom: 1rem
+                                padding-right: 1rem
+                                &:first-child
+                                    padding-top: 0 !important
+                                &:last-child
+                                    padding-bottom: 0 !important
+                &-fullRes
+                    background: rgba(0, 0, 0, 0.925)
+                    -webkit-backdrop-filter: blur(1.5px)
+                    backdrop-filter: blur(1.5px)
+                    z-index: 101
+                    position: fixed
+                    top: 0
+                    left: 0
+                    display: flex
+                    flex-direction: column
+                    justify-content: space-between
+                    opacity: 0
+                    transition: opacity .6s cubic-bezier(.31,.05,.07,1)
+                    &-dummy
+                        position: absolute
+                        width: 100%
+                        height: calc(100% - 15rem)
+                        top: 0
+                        left: 0
+                        background: red
+                        z-index: -1
+                    &.initialized
+                        transition: opacity .6s cubic-bezier(.31,.05,.07,1)
+                        opacity: 1
+                    &.uninitializing
+                        transition: .3s cubic-bezier(.31,.05,.07,1) .01s
+                        opacity: 0
+                    &-wrapper
+                        display: flex
+                        flex-direction: row
+                        justify-content: center
+                        width: calc(100% - 10em)
+                        &-content
+                            display: flex
+                            flex-direction: column
+                            &-title
+                                color: $cTEXTprimary
+                                font-family: "EXO 2"
+                                font-weight: 400
+                                margin: 0
+                            &-description
+                                color: $cTEXTprimary
+                                font-family: "EXO 2"
+                                font-weight: 300
+                                margin: 0
+                                padding: 1em .5em 1.5em 0
+                            &-divider
+                                border-color: $cTEXTprimary
+                                width: 100%
+                            &-tags
+                                font-family: $EXO
+                                font-weight: 300
+                                color: $cTEXTprimary
+                                font-size: 16px
+                                text-transform: uppercase
+                                margin: 0
+                                &-tag
+                                    position: relative
+                                    text-transform: lowercase
+                                    padding: 3px
+                                    margin-left: 3px
+                                    margin-right: 3px
+                                    overflow: hidden
+                                    i
+                                        font-family: $EXO
+                                        font-weight: 300
+                                        color: transparent
+                                        font-style: normal
+                                    .overtext
+                                        position: absolute
+                                        top: 3px
+                                        left: 3px
+                                        width: 100%
+                                        height: 100%
+                                        font-family: $EXO
+                                        font-weight: 300
+                                        color: $cTEXTprimary
+                                        transition: all .2s
+                                        display: inline-block
+                                    &::before
+                                        content: ''
+                                        position: absolute
+                                        width: 100%
+                                        height: 1px
+                                        bottom: 0
+                                        left: 0
+                                        background: $cTEXTprimary
+                                        transition: all .2s ease-in-out
+                                        mix-blend-mode: difference
+                                    &:hover
+                                        cursor: pointer
+                                        .overtext
+                                            color: $cTEXTsecondary
+                                            z-index: 1
+                                        &::before
+                                            height: 100%
+                                            z-index: 0
+                                            mix-blend-mode: difference
+                    &-ui
+                        position: absolute
+                        top: 0
+                        right: 2em
+                        display: flex
+                        flex-direction: row-reverse
+                        justify-content: space-between
+                        height: calc(100% - 4em)
+                        &-dummy
+                            height: 2em
+                        &-dismiss
+                            margin-top: 2em
+                            width: 2em
+                            height: 2em
+                            position: relative
+                        &-slides
+                            &-caption
+                                position: absolute
+                                top: 0
+                                right: 0em
+                                bottom: 0
+                                left: 0em
+                                width: 0
+                                height: 0
+                                z-index: -1
+                                margin: auto
+                                &::before, &::after
+                                    content: ''
+                                    position: absolute
+                                    top: 1.9em
+                                    width: 1em
+                                    height: 3px
+                                    background: $cTEXTprimary
+                                &::before
+                                    left: -4em
+                                &::after
+                                    right: -4em
+                    &-imageWrapper
+                        position: relative
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        &-subWrapper
+                            transition: all .6s cubic-bezier(.31,.05,.07,1)
+                            height: 100%
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            position: relative
+                            &-img
+                                height: 100%
+                                width: auto
+                                opacity: 0
+                            &-viewport
+                                height: 100%
+                                width: 100%
+                                display: flex
+                                align-items: center
+                                justify-content: center
+                                position: absolute
+                                top: 0
+                                right: 0
+                                bottom: 0
+                                left: 0
+                                &-wrapper
+                                    height: 100%
+                                    display: flex
+                                    align-items: center
+                                    justify-content: center
+                                    transition: all .6s cubic-bezier(.31,.05,.07,1)
+                                    overflow: hidden
+                                    img
+                                        transition: all .6s cubic-bezier(.31,.05,.07,1)
+                                        opacity: 1
+                                    &.shrink
+                                        img
+                                            height: auto
+                                            width: 100%
+                                    &.scale
+                                        img
+                                            height: 100%
+                                            width: auto
+                                
+.splide
+    position: relative
+    .splide__slide
+        display: flex
+        justify-content: center
+        align-items: center
+        position: relative
+        &::after
+            content: ''
+            position: absolute
+            width: 100%
+            height: 100%
+            background: #00000096
+            transition: all .3s cubic-bezier(.31,.05,.07,1)
+        &.is-active
+            opacity: 1
+            overflow: visible
+            &::after
+                background: #00000000
+        img
+            max-width: 100%
+            max-height: 100%
+            object-fit: cover !important
+            &:hover
+                cursor: pointer !important

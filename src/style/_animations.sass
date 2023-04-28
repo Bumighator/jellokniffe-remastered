@@ -1,0 +1,45 @@
+@import _variables
+
+@keyframes borderAnimation 
+    from 
+        background-position: 0 0, -11px 0, 100% -11px, 0 100%
+    to
+        background-position: 0 -11px, 0 0, 100% 0, -11px 100%
+
+@keyframes fullRotation
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)
+
+@keyframes slideInNavbarSectionActive
+    40%
+        background: #dfcbd3
+    50%
+        background: #bfc2df
+    80%
+        background: #cdddc8
+    100%
+        background: #F2EED3
+
+@keyframes slideInNavbarSectionDefault
+    40%
+        color: #dfcbd3
+    50%
+        color: #bfc2df
+    80%
+        color: #cdddc8
+    100%
+        color: #F2EED3
+    
+@keyframes FullResolutionAppear
+    from
+        opacity: 0
+    to
+        opacity: 1
+
+@keyframes FullResolutionDisappear
+    from
+        opacity: 1
+    to
+        opacity: 0
