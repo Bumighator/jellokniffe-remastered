@@ -68,7 +68,7 @@ const ParallaxTileRenderer = (props) => {
                     setHeight(`${selfWidthRef.current.clientWidth / 1.55}px`)
                     setWidth(`100%`)
                     break;
-                case false:
+                default:
                     setHeight(`80%`)
                     setWidth(`${selfWidthRef.current.clientHeight / 1.55}px`)
             }
